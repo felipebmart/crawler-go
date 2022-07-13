@@ -13,12 +13,12 @@ func main() {
 
 	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
 		link := e.Attr("href")
-		fmt.Printf("Link found: %q -> %s\n", e.Text, link)
+		fmt.Printf("Link encontrado: %q -> %s\n", e.Text, link)
 		c.Visit(e.Request.AbsoluteURL(link))
 	})
 
 	c.OnRequest(func(r *colly.Request) {
-		fmt.Println("Visiting", r.URL.String())
+		fmt.Println("Acessei o link", r.URL.String())
 	})
 
 	c.Visit("https://g1.globo.com/")
